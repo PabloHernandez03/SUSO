@@ -1,0 +1,1 @@
+este es un scrip hecho en bash

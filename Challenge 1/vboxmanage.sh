@@ -24,7 +24,7 @@ read -p "Tipo de sistema operativo (ej. Ubuntu_64, Windows10_64, etc.): " tipoSO
 read -p "Número de CPUs: " numCPU
 read -p "Memoria en GB: " memoriaGB
 read -p "VRAM en MB: " vramMB
-read -p "Tamaño del disco en GB: " tamañoDIS_GB
+read -p "Tamaño del disco en GB: " tamanoDIS_GB
 read -p "Nombre del controlador (ej. SATA Controller): " SATA
 
 # Validaciones
@@ -32,7 +32,7 @@ validar_tipo_so "$tipoSO"
 validar_numero "$numCPU"
 validar_numero "$memoriaGB"
 validar_numero "$vramMB"
-validar_numero "$tamañoDIS_GB"
+validar_numero "$tamanoDIS_GB"
 
 # Convertir memoria de GB a MB (VirtualBox usa MB para --memory)
 memoriaMB=$((memoriaGB * 1024))
@@ -47,7 +47,7 @@ VBoxManage modifyvm "$nombreVM" --cpus "$numCPU" --memory "$memoriaMB" --vram "$
 
 # Creación del disco duro virtual
 echo "Creando el disco duro virtual..."
-VBoxManage createmedium disk --filename "$nombreVM.vdi" --size "$((tamañoDIS_GB * 1024))"
+VBoxManage createmedium disk --filename "$nombreVM.vdi" --size "$((tamanoDIS_GB * 1024))"
 
 # Asignación del disco duro a la máquina virtual
 echo "Asignando el disco duro a la máquina virtual..."

@@ -18,10 +18,10 @@ void *tarea(void *arg)
 		(*datos->contador_global)++;
 		pthread_mutex_unlock(datos->mutex);
 	}
-printf("Hilo %d finalizado.
-", datos->id);
-return NULL;
+	printf("Hilo %d finalizado.", datos->id);
+	return NULL;
 }
+
 int main()
 {
 	pthread_t hilos[NUM_HILOS];
@@ -41,7 +41,6 @@ int main()
 		pthread_join(hilos[i], NULL);
 	}
 	pthread_mutex_destroy(&mutex);
-printf("Contador final: %d
-", contador);
-return 0;
+	printf("Contador final: %d", contador);
+	return 0;
 }
